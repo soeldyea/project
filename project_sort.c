@@ -104,6 +104,15 @@ void print_array(double *array, int n) {
     printf("\n");
 }
 
+int isSorted(double arr[], int size) {
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < arr[i - 1]) {
+            return 0; // Массив не отсортирован
+        }
+    }
+    return 1; // Массив отсортирован
+}
+
 int main(void) {
     srand(time(NULL)); // инициализация генератора случайных чисел
 
@@ -139,12 +148,14 @@ int main(void) {
 
         count_comp_1 = 0;
         count_swap_1 = 0;
-        Shell_sort(arrays[k], n);   
+        Shell_sort(arrays[k], n);
+        printf("Shell sort: %d\n", isSorted(arrays[k], n));   
         printf("Сортировка Шелла число сравнений: %lld, число обменов: %lld\n", count_comp_1, count_swap_1);
 
         count_comp_2 = 0;
         count_swap_2 = 0;
         quicksort(original, n); 
+        printf("quick sort: %d\n", isSorted(arrays[k], n));
         printf("Быстрая сортировка число сравнений: %lld, число обменов: %lld\n", count_comp_2, count_swap_2);
         
         printf("\n\n"); 
